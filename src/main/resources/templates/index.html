@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Stylish Portfolio - Start Bootstrap Template</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+  <!-- Simple line icons-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+    rel="stylesheet" />
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+    rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+  <nav id="sidebar-wrapper" style="background-color: #000000c2">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand"><a href="/">Abdulloh</a></li>
+      <li class="sidebar-nav-item"><a href="/dashboard">Dashboard</a></li>
+      <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+      <li class="sidebar-nav-item"><a href="#about">About</a></li>
+      <li class="sidebar-nav-item"><a href="#education">Education</a></li>
+      <li class="sidebar-nav-item"><a href="#experience">Experience</a></li>
+      <li class="sidebar-nav-item"><a href="#training">Training</a></li>
+      <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
+      <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- Header-->
+  <header class="masthead d-flex align-items-center" style="background-color: #ecb807">
+    <div class="container px-4 px-lg-5 text-center" th:each="dataProfile :${dataListProfile}">
+      <img th:src="${'assets/img/'+dataProfile.image}" alt="Abdulloh" width="200" class="rounded-circle img-thumbnail" />
+      <h1 class="mb-1" th:text="${dataProfile.name}">Name</h1>
+      <h3 class="mb-5"><em th:text="${dataProfile.title}">Title</em></h3>
+
+      <div class="container px-4 footer text-center pt-5">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" th:href="${dataProfile.email}" style="background-color: #303030"><i class="icon-envelope"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" th:href="${dataProfile.linkedin}" style="background-color: #303030"><i class="icon-social-linkedin"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" th:href="${dataProfile.github}" style="background-color: #303030"><i class="icon-social-github"></i></a>
+          </li>
+        </ul>
+        
+      </div>
+      <a class="btn text-white btn-xl" href="#about" style="background-color: #303030">Show More</a>
+    </div>
+  </header>
+
+      <!-- About-->
+      <section class="content-section bg-light bg-white" id="about">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+          <path fill="#ecb807" fill-opacity="1" d="M0,128L80,128C160,128,320,128,480,112C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+        </svg>
+        <div class="container px-4 px-lg-5 text-center">
+          <div class="row gx-4 gx-lg-5 justify-content-center pt-4">
+            <div class="col-lg-10">
+              <h2>About Me</h2>
+              <div class="row justify-content-center fs-5 text-center pt-4 pb-4">
+                <div class="col-md-10" th:each="dataAbout :${dataListAbout}">
+                  <p th:text="${dataAbout.name}"></p>
+                </div>
+              </div>
+  
+              
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- Education-->
+  <section class="content-section text-white text-center" id="education" style="background-color: #303030">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+      <path fill="#ffffff" fill-opacity="1" d="M0,96L80,101.3C160,107,320,117,480,117.3C640,117,800,107,960,106.7C1120,107,1280,117,1360,122.7L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+    </svg>
+    <div class="container px-4 px-lg-5">
+      <div class="content-section-heading pt-4 pb-4">
+        <h3 class="text-secondary mb-0">Services</h3>
+        <h2 class="mb-5">Education</h2>
+      </div>
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0" th:each="dataEducation :${dataListEducation}">
+          <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+          <h4><strong th:text="${dataEducation.nameeducation}">Education</strong></h4>
+          <p class="text-faded mb-0" th:text="${dataEducation.major}">Major</p>
+
+          <p class="text-faded mb-0 bi bi-calendar-fill pe-1" th:text="' '+${dataEducation.year}">Year</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Experience-->
+
+  <section class="content-section" id="experience">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+      <path fill="#303030" fill-opacity="1"
+        d="M0,64L80,69.3C160,75,320,85,480,90.7C640,96,800,96,960,96C1120,96,1280,96,1360,96L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+      </path>
+    </svg>
+    <div class="container px-4 px-lg-5 pt-4">
+      <div class="content-section-heading text-center">
+        <h2 class="mb-5">Experience</h2>
+      </div>
+      <div class="row justify-content-center">
+
+        
+        <div class="col-md-4" th:each="dataExperience :${dataListExperience}">
+          <div class="card text-center">
+            <div class="card-header" th:text="${dataExperience.company}">Company
+             
+            </div>
+            <div class="card-body">
+              <img th:src="${'assets/img/'+dataExperience.image}" alt="Image Company" width="200" class="pb-4 pt-2">
+              <h5 class="card-title" th:text="${dataExperience.position}">Position</h5>
+              <p class="card-text" th:text="${dataExperience.address}">Address</p>
+
+
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header text-center" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Description
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>Job Desk</strong>
+                  <ul class="text-start" th:text="${dataExperience.jobdesk}">
+                    Deskripsinya
+                
+                  </ul>
+
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-muted" th:text="${dataExperience.year}">
+              Year
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+  </section>
+  <!-- Training-->
+  <section class="content-section" id="training" style="background-color: #ecb807;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+      <path fill="#ffffff" fill-opacity="1"
+        d="M0,96L80,90.7C160,85,320,75,480,80C640,85,800,107,960,117.3C1120,128,1280,128,1360,128L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+      </path>
+    </svg>
+    <div class="container px-4 px-lg-5 pt-4">
+      <div class="content-section-heading text-center">
+
+        <h2 class="mb-5">Training</h2>
+      </div>
+      <div class="accordion" id="accordionExample">
+        
+        <div class="accordion-item" th:each="dataTraining :${dataListTraining}">
+          <h2 class="accordion-header" id="headingThree">
+
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" th:text="${dataTraining.company + ' - ' + dataTraining.title}" strong>
+              ExperIoT 4.0 - INTERNET OF THINGS KELAS ADVANCE IOT WEB BASED
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row">
+                <div class="col-md-12" th:text="${dataTraining.monthstart + ' ' + dataTraining.yearstart+ ' - ' + dataTraining.monthend +'  ' + dataTraining.yearend}"></div>
+                <div class="col-md-12">
+                  <strong th:text="${dataTraining.company }"></strong>
+                </div>
+                <div class="col-md-12" th:text="${dataTraining.description }">
+                 
+                </div>
+                <div class="col-md-6" >
+                  <img th:src="${'assets/img/'+dataTraining.sertificatefront}" th:alt="${dataTraining.sertificatefront }" width="100%" class="pb-4 pt-2">
+                 
+                </div>
+                <div class="col-md-6" >
+                  <img th:src="${'assets/img/'+dataTraining.sertificateback}" th:alt="${dataTraining.sertificateback }"  width="100%" class="pb-4 pt-2">
+                </div>
+
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+ <!-- Portfolio-->
+ <section class="content-section" id="portfolio">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 160">
+    <path fill="#ecb807" fill-opacity="1" d="M0,160L80,144C160,128,320,96,480,90.7C640,85,800,107,960,112C1120,117,1280,107,1360,101.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+  </svg>
+  <div class="container px-4 px-lg-5 pt-4">
+    <div class="content-section-heading text-center">
+      <h3 class="text-secondary mb-0">Recent Projects</h3>
+      <h2 class="mb-5">Portofolio</h2>
+    </div>
+    <div class="row gx-0 justify-content-center">
+      <div class="col-lg-4" th:each="dataPortofolio :${dataListPortofolio}">
+        <a class="portfolio-item" th:href="@{portofolio-view-{id}(id=${dataPortofolio.id})}">
+          <div class="caption">
+            <div class="caption-content">
+              <div class="h2" th:text="${dataPortofolio.date}">Stationary</div>
+              <p class="mb-0" th:text="${dataPortofolio.program}">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+            </div>
+          </div>
+          <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Contact-->
+  <section class="content-section  text-white" id="contact" style="background-color: #303030;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 160">
+      <path fill="#ffffff" fill-opacity="1"
+        d="M0,96L80,106.7C160,117,320,139,480,149.3C640,160,800,160,960,144C1120,128,1280,96,1360,80L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+      </path>
+    </svg>
+    <div class="container">
+      <div class="row text-center mb-3 pt-4">
+        <div class="col">
+          <h2>Contact Me</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Nama Lengkap</label>
+              <input type="text" class="form-control" id="name" aria-describedby="name" />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" />
+            </div>
+            <div class="mb-3">
+              <label for="pesan" class="form-label">Pesan</label>
+              <textarea class="form-control" id="pesan" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Map-->
+  <div class="map">
+    <iframe
+      src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Jl. Tambun Selatan No.3, RT.7/RW.8, Cakung Tim., Kec. Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13910&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+    <br />
+
+  </div>
+  <!-- Footer-->
+  <footer class="footer text-center">
+    <div class="container px-4 px-lg-5">
+      <!-- <ul class="list-inline mb-5">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+        </li>
+      </ul> -->
+      <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
+    </div>
+  </footer>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

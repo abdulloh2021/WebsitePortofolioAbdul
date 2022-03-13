@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper" style="background-color: #000000c2">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="/">Abdulloh</a></li>
+        <li class="sidebar-nav-item"><a href="dashboard">Main Menu</a></li>
+        <li class="sidebar-nav-item"><a href="setting-profile">Profile</a></li>
+        <li class="sidebar-nav-item"><a href="setting-about">About</a></li>
+        <li class="sidebar-nav-item"><a href="setting-education">Education</a></li>
+        <li class="sidebar-nav-item"><a href="setting-experience">Experience</a></li>
+        <li class="sidebar-nav-item"><a href="setting-training">Training</a></li>
+        <li class="sidebar-nav-item"><a href="setting-portofolio">Portofolio</a></li>
+      </ul>
+    </nav>
+    <!-- Portfolio-->
+    <section class="content-section" id="portfolio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 160">
+        <path fill="#ecb807" fill-opacity="1" d="M0,160L80,144C160,128,320,96,480,90.7C640,85,800,107,960,112C1120,117,1280,107,1360,101.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+      </svg>
+      <div class="container px-4 px-lg-5 pt-4">
+        <div class="content-section-heading text-center">
+          <h3 class="text-secondary mb-0">Recent Projects</h3>
+          <h2 class="mb-5">Portofolio</h2>
+        </div>
+        <div class="row gx-0 justify-content-center">
+          <div class="col-lg-4" th:each="dataPortofolio :${dataListPortofolio}">
+            <a class="portfolio-item" th:href="@{portofolio-view-{id}(id=${dataPortofolio.id})}">
+              <div class="caption">
+                <div class="caption-content">
+                  <div class="h2" th:text="${dataPortofolio.date}">Stationary</div>
+                  <p class="mb-0" th:text="${dataPortofolio.program}">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                </div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="content-section" id="table">
+      <div class="container">
+        <div class="row text-center mb-3 pt-3">
+          <div th:if="${session.msg}">
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+              <div class="alert alert-success alert-dismissible fade show" role="alert" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div th:text="${session.msg}"></div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+            </div>
+          </div>
+          <div class="col">
+            <h2>Table Profile</h2>
+          </div>
+        </div>
+
+        <div class="row mb-3 pt-3">
+          <div class="col text-start">
+            <a class="btn text-white btn-l btn-primary" data-bs-toggle="modal" data-bs-target="#addPortofolioModal"><i class="icon-plus"> Add</i></a>
+          </div>
+          <div class="col text-end">
+            <a class="btn text-white btn-l" href="#page-top" style="background-color: #303030">Show</a>
+          </div>
+        </div>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr class="text-center">
+              <td>Id</td>
+              <td>Project</td>
+              <td>Description</td>
+              <td>Date</td>
+              <td>User</td>
+              <td>Program</td>
+              <td>Github</td>
+              <td>Image 1</td>
+              <td>Image 2</td>
+              <td>Video</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody th>
+            <tr th:each="dataPortofolio :${dataListPortofolio}">
+              <td th:text="${dataPortofolio.id}"></td>
+              <td th:text="${dataPortofolio.project}"></td>
+              <td th:text="${dataPortofolio.description}"></td>
+              <td th:text="${dataPortofolio.date}"></td>
+              <td th:text="${dataPortofolio.user}"></td>
+              <td th:text="${dataPortofolio.program}"></td>
+              <td th:text="${dataPortofolio.github}"></td>
+              <td th:text="${dataPortofolio.image1}"></td>
+              <td th:text="${dataPortofolio.image2}"></td>
+              <td th:text="${dataPortofolio.video}"></td>
+
+              <td class="col-md-2 text-center">
+                <button
+                  type="button"
+                  class="btn btn-primary col-md-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editPortofolioModal"
+                  th:data-bs-id="${dataPortofolio.id}"
+                  th:data-bs-project="${dataPortofolio.project}"
+                  th:data-bs-description="${dataPortofolio.description}"
+                  th:data-bs-date="${dataPortofolio.date}"
+                  th:data-bs-user="${dataPortofolio.user}"
+                  th:data-bs-program="${dataPortofolio.program}"
+                  th:data-bs-github="${dataPortofolio.github}"
+                  th:data-bs-image1="${dataPortofolio.image1}"
+                  th:data-bs-image2="${dataPortofolio.image2}"
+                  th:data-bs-video="${dataPortofolio.video}"
+                >
+                  <i class="icon-note"></i>Edit
+                </button>
+                <a button type="button" class="btn btn-primary col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" th:href="@{setting-portofolio-edit-{id}(id=${dataPortofolio.id})}"><i class="icon-note"></i></a>
+                <a button type="button" class="btn btn-danger col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" th:href="@{setting-portofolio-delete-{id}(id=${dataPortofolio.id})}"><i class="icon-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row text-center mb-3 pt-3">
+          <div class="col">
+            <a class="btn text-white btn-xl" href="#page-top" style="background-color: #303030">Show</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal addPortofolioModal-->
+    <div class="modal fade" id="addPortofolioModal" tabindex="-1" aria-labelledby="addPortofolioModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form th:action="@{/setting-portofolio-add-register}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addPortofolioModalLabel">Add Portofolio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Id</label>
+                <input type="text" class="form-control" id="id" name="id" />
+              </div> -->
+              <div class="col-md-12">
+                <label for="validationDefault01" class="form-label">Project</label>
+                <input type="text" class="form-control" id="project" name="project" />
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" />
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Date</label>
+                <input type="text" class="form-control" id="date" name="date" />
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">User</label>
+                <input type="text" class="form-control" id="user" name="user" />
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Program</label>
+                <input type="text" class="form-control" id="program" name="program" />
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Github</label>
+                <input type="text" class="form-control" id="github" name="github" />
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Video Embed Youtube</label>
+                <input type="text" class="form-control" id="video" name="video" />
+              </div>
+              <div class="col-md-6">
+                <label for="image1" class="form-label">Image 1</label>
+                <input class="form-control" type="file" id="image1" name="image1" />
+              </div>
+              <div class="col-md-6">
+                <label for="image2" class="form-label">Image 2</label>
+                <input class="form-control" type="file" id="image2" name="image2" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal editPortofolioModal-->
+    <div class="modal fade" id="editPortofolioModal" tabindex="-1" aria-labelledby="editPortofolioModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form th:action="@{/setting-portofolio-add-edit}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editPortofolioModalLabel">New message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" class="form-control" id="id" name="id" />
+
+              <div class="col-md-12">
+                <label for="project" class="form-label">Project</label>
+
+                <input type="text" class="form-control" id="project" name="project" />
+              </div>
+              <div class="col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
+              </div>
+              <div class="col-md-12">
+                <label for="date" class="form-label">Date</label>
+                <input type="text" class="form-control" id="date" name="date" />
+              </div>
+              <div class="col-md-12">
+                <label for="user" class="form-label">User</label>
+                <input type="text" class="form-control" id="user" name="user" />
+              </div>
+              <div class="col-md-12">
+                <label for="program" class="form-label">Program</label>
+                <input type="text" class="form-control" id="program" name="program" />
+              </div>
+              <div class="col-md-12">
+                <label for="github" class="form-label">Github</label>
+                <input type="text" class="form-control" id="github" name="github" />
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefault01" class="form-label">Video Embed Youtube</label>
+                <input type="text" class="form-control" id="video" name="video" />
+              </div>
+              <div class="col-md-12">
+                <label for="image1" class="form-label">Image 1</label>
+                <input class="form-control" type="file" id="image1" name="image1" />
+              </div>
+              <div class="col-md-12">
+                <label for="image2" class="form-label">Image 2</label>
+                <input class="form-control" type="file" id="image2" name="image2" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- ini buat form edit -->
+    <script>
+      var exampleModal = document.getElementById("editPortofolioModal");
+      editPortofolioModal.addEventListener("show.bs.modal", function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+
+        var id = button.getAttribute("data-bs-id");
+        var project = button.getAttribute("data-bs-project");
+        var description = button.getAttribute("data-bs-description");
+        var date = button.getAttribute("data-bs-date");
+        var user = button.getAttribute("data-bs-user");
+        var program = button.getAttribute("data-bs-program");
+        var github = button.getAttribute("data-bs-github");
+        var image1 = button.getAttribute("data-bs-image1");
+        var image2 = button.getAttribute("data-bs-image2");
+        var video = button.getAttribute("data-bs-video");
+
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modalTitle = editPortofolioModal.querySelector(".modal-title");
+        var modalBodyInputId = editPortofolioModal.querySelector(".modal-body  #id");
+        var modalBodyInputProject = editPortofolioModal.querySelector(".modal-body  #project");
+        var modalBodyInputDescription = editPortofolioModal.querySelector(".modal-body  #description");
+        var modalBodyInputDate = editPortofolioModal.querySelector(".modal-body  #date");
+        var modalBodyInputUser = editPortofolioModal.querySelector(".modal-body  #user");
+        var modalBodyInputProgram = editPortofolioModal.querySelector(".modal-body  #program");
+        var modalBodyInputGithub = editPortofolioModal.querySelector(".modal-body  #github");
+        var modalBodyInputImage1 = editPortofolioModal.querySelector(".modal-body  #image1");
+        var modalBodyInputImage2 = editPortofolioModal.querySelector(".modal-body  #image2");
+        var modalBodyInputVideo = editPortofolioModal.querySelector(".modal-body  #video");
+
+        modalTitle.textContent = "Edit Data Portofolio " + id;
+        modalBodyInputId.value = id;
+        modalBodyInputProject.value = project;
+        modalBodyInputDescription.value = description;
+        modalBodyInputDate.value = date;
+        modalBodyInputUser.value = user;
+        modalBodyInputProgram.value = program;
+        modalBodyInputGithub.value = github;
+        modalBodyInputImage1.value = image1;
+        modalBodyInputImage2.value = image2;
+        modalBodyInputVideo.value = video;
+      });
+    </script>
+  </body>
+</html>

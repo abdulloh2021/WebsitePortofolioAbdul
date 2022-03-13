@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper" style="background-color: #000000c2">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="/">Abdulloh</a></li>
+        <li class="sidebar-nav-item"><a href="dashboard">Main Menu</a></li>
+        <li class="sidebar-nav-item"><a href="setting-profile">Profile</a></li>
+        <li class="sidebar-nav-item"><a href="setting-about">About</a></li>
+        <li class="sidebar-nav-item"><a href="setting-education">Education</a></li>
+        <li class="sidebar-nav-item"><a href="setting-experience">Experience</a></li>
+        <li class="sidebar-nav-item"><a href="setting-training">Training</a></li>
+        <li class="sidebar-nav-item"><a href="setting-portofolio">Portofolio</a></li>
+      </ul>
+    </nav>
+    <!-- Education-->
+    <section class="content-section text-white text-center" id="education" style="background-color: #303030">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+        <path fill="#ffffff" fill-opacity="1" d="M0,96L80,101.3C160,107,320,117,480,117.3C640,117,800,107,960,106.7C1120,107,1280,117,1360,122.7L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+      </svg>
+      <div class="container px-4 px-lg-5">
+        <div class="content-section-heading pt-4 pb-4">
+          <h3 class="text-secondary mb-0">Services</h3>
+          <h2 class="mb-5">Education</h2>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0" th:each="dataEducation :${dataListEducation}">
+            <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+            <h4><strong th:text="${dataEducation.nameeducation}">Education</strong></h4>
+            <p class="text-faded mb-0" th:text="${dataEducation.major}">Major</p>
+
+            <p class="text-faded mb-0 bi bi-calendar-fill pe-1" th:text="' '+${dataEducation.year}">Year</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="content-section" id="table">
+      <div class="container">
+        <div class="row text-center mb-3 pt-3">
+          <div th:if="${session.msg}">
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+              <div class="alert alert-success alert-dismissible fade show" role="alert" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div th:text="${session.msg}"></div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+            </div>
+          </div>
+          <div class="col">
+            <h2>Table Profile</h2>
+          </div>
+        </div>
+
+        <div class="row mb-3 pt-3">
+          <div class="col text-start">
+            <a class="btn text-white btn-l btn-primary" data-bs-toggle="modal" data-bs-target="#addEducationModal"><i class="icon-plus"> Add</i></a>
+          </div>
+          <div class="col text-end">
+            <a class="btn text-white btn-l" href="#page-top" style="background-color: #303030">Show</a>
+          </div>
+        </div>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr class="text-center">
+              <td>Id</td>
+              <td>Education</td>
+              <td>Major</td>
+              <td>Year</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody th>
+            <tr th:each="dataEducation :${dataListEducation}">
+              <td th:text="${dataEducation.id}">1</td>
+              <td th:text="${dataEducation.nameeducation}">SMK N 4 JAKARTA</td>
+              <td th:text="${dataEducation.major}">Teknik Komputer Jaringan</td>
+              <td th:text="${dataEducation.year}">2014 - 2017</td>
+
+              <td class="col-md-2 text-center">
+                <button
+                  type="button"
+                  class="btn btn-primary col-md-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editEducationModal"
+                  th:data-bs-id="${dataEducation.id}"
+                  th:data-bs-education="${dataEducation.nameeducation}"
+                  th:data-bs-major="${dataEducation.major}"
+                  th:data-bs-year="${dataEducation.year}"
+                >
+                  <i class="icon-note"></i>Edit
+                </button>
+                <a button type="button" class="btn btn-primary col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" th:href="@{setting-education-edit-{id}(id=${dataEducation.id})}"><i class="icon-note"></i></a>
+                <a button type="button" class="btn btn-danger col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" th:href="@{setting-education-delete-{id}(id=${dataEducation.id})}"><i class="icon-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row text-center mb-3 pt-3">
+          <div class="col">
+            <a class="btn text-white btn-xl" href="#page-top" style="background-color: #303030">Show</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Modal addEducationModal-->
+    <div class="modal fade" id="addEducationModal" tabindex="-1" aria-labelledby="addEducationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form th:action="@{/setting-education-add-register}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addEducationModalLabel">Add Education</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Id</label>
+                <input type="text" class="form-control" id="id" name="id" />
+              </div> -->
+              <div class="col-md-12">
+                <label for="validationDefault01" class="form-label">Education</label>
+                <input type="text" class="form-control" id="nameeducation" name="nameeducation" />
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefault02" class="form-label">Major</label>
+                <input type="text" class="form-control" id="major" name="major" />
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefault02" class="form-label">Year</label>
+                <input type="text" class="form-control" id="year" name="year" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal editEducationModal-->
+    <div class="modal fade" id="editEducationModal" tabindex="-1" aria-labelledby="editEducationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form th:action="@{/setting-education-add-edit}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editEducationModalLabel">New message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col-md-12">
+                <label for="validationDefault02" class="form-label">Id</label>
+                <input type="text" class="form-control" id="id" required name="id" />
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefault02" class="form-label">Education</label>
+                <input type="text" class="form-control" id="nameeducation" required name="nameeducation" />
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefault02" class="form-label">Major</label>
+                <input type="text" class="form-control" id="major" required name="major" />
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefault02" class="form-label">Year</label>
+                <input type="text" class="form-control" id="year" required name="year" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- ini buat form edit -->
+    <script>
+      var exampleModal = document.getElementById("editEducationModal");
+      editEducationModal.addEventListener("show.bs.modal", function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+
+        var id = button.getAttribute("data-bs-id");
+        var education = button.getAttribute("data-bs-education");
+        var major = button.getAttribute("data-bs-major");
+        var year = button.getAttribute("data-bs-year");
+
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modalTitle = editEducationModal.querySelector(".modal-title");
+        var modalBodyInputId = editEducationModal.querySelector(".modal-body  #id");
+        var modalBodyInputEducation = editEducationModal.querySelector(".modal-body  #nameeducation");
+        var modalBodyInputMajor = editEducationModal.querySelector(".modal-body  #major");
+        var modalBodyInputYear = editEducationModal.querySelector(".modal-body  #year");
+
+        modalTitle.textContent = "Edit Data Education " + id;
+        modalBodyInputId.value = id;
+        modalBodyInputEducation.value = education;
+        modalBodyInputMajor.value = major;
+        modalBodyInputYear.value = year;
+      });
+    </script>
+  </body>
+</html>

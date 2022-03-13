@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<htm lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper" style="background-color: #000000c2">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="/">Abdulloh</a></li>
+        <li class="sidebar-nav-item"><a href="dashboard">Main Menu</a></li>
+        <li class="sidebar-nav-item"><a href="setting-profile">Profile</a></li>
+        <li class="sidebar-nav-item"><a href="setting-about">About</a></li>
+        <li class="sidebar-nav-item"><a href="setting-education">Education</a></li>
+        <li class="sidebar-nav-item"><a href="setting-experience">Experience</a></li>
+        <li class="sidebar-nav-item"><a href="setting-training">Training</a></li>
+        <li class="sidebar-nav-item"><a href="setting-portofolio">Portofolio</a></li>
+      </ul>
+    </nav>
+    <!-- Training-->
+  <section class="content-section" id="training" style="background-color: #ecb807;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+      <path fill="#ffffff" fill-opacity="1"
+        d="M0,96L80,90.7C160,85,320,75,480,80C640,85,800,107,960,117.3C1120,128,1280,128,1360,128L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+      </path>
+    </svg>
+    <div class="container px-4 px-lg-5 pt-4">
+      <div class="content-section-heading text-center">
+
+        <h2 class="mb-5">Training</h2>
+      </div>
+      <div class="accordion" id="accordionExample">
+        
+        <div class="accordion-item" th:each="dataTraining :${dataListTraining}">
+          <h2 class="accordion-header" id="headingThree">
+
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" th:text="${dataTraining.company + ' - ' + dataTraining.title}" strong>
+              ExperIoT 4.0 - INTERNET OF THINGS KELAS ADVANCE IOT WEB BASED
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row">
+                <div class="col-md-12" th:text="${dataTraining.monthstart + ' ' + dataTraining.yearstart+ ' - ' + dataTraining.monthend +'  ' + dataTraining.yearend}"></div>
+                <div class="col-md-12">
+                  <strong th:text="${dataTraining.company }"></strong>
+                </div>
+                <div class="col-md-12" th:text="${dataTraining.description }">
+                 
+                </div>
+                <div class="col-md-6" >
+                  <img th:src="${'assets/img/'+dataTraining.sertificatefront}" th:alt="${dataTraining.sertificatefront }" width="100%" class="pb-4 pt-2">
+                 
+                </div>
+                <div class="col-md-6" >
+                  <img th:src="${'assets/img/'+dataTraining.sertificateback}" th:alt="${dataTraining.sertificateback }"  width="100%" class="pb-4 pt-2">
+                </div>
+
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+    <!-- Table -->
+  <section class="content-section" id="table">
+    <div class="container">
+      <div class="row text-center mb-3 pt-3">
+        
+        <div th:if="${session.msg}">
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <div th:text="${session.msg}"></div>
+
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+          </div>
+        </div>
+        <div class="col">
+          <h2>Table Profile</h2>
+        </div>
+      </div>
+
+      <div class="row mb-3 pt-3">
+        <div class="col text-start">
+          <a class="btn text-white btn-l btn-primary" data-bs-toggle="modal" data-bs-target="#addTrainingModal"><i class="icon-plus"> Add</i></a>
+        </div>
+        <div class="col text-end">
+          <a class="btn text-white btn-l" href="#page-top" style="background-color: #303030">Show</a>
+        </div>
+      </div>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr class="text-center">
+            <td>Id</td>
+              <td>Title</td>
+              <td>Company</td>
+              <td>Description</td>
+              <td>Month Start</td>
+              <td>Year Start</td>
+              <td>Month End</td>
+              <td>Year End</td>
+              <td>Sertification Front</td>
+              <td>Sertification Back</td>
+              <td>Action</td>
+              
+          </tr>
+        </thead>
+        <tbody th>
+          <tr th:each="dataTraining :${dataListTraining}">
+            <td th:text="${dataTraining.id}"></td>
+            <td th:text="${dataTraining.title}"></td>
+            <td th:text="${dataTraining.company}"></td>
+            <td th:text="${dataTraining.description}"></td>
+            <td th:text="${dataTraining.monthstart}"></td>
+            <td th:text="${dataTraining.yearstart}"></td>
+            <td th:text="${dataTraining.monthend}"></td>
+            <td th:text="${dataTraining.yearend}"></td>
+            <td th:text="${dataTraining.sertificatefront}"></td>
+            <td th:text="${dataTraining.sertificateback}"></td>
+
+            <td class="col-md-2 text-center">
+              <button
+                type="button"
+                class="btn btn-primary col-md-3"
+                data-bs-toggle="modal"
+                data-bs-target="#editTrainingModal"
+                th:data-bs-id="${dataTraining.id}"
+                th:data-bs-title="${dataTraining.title}"
+                th:data-bs-company="${dataTraining.company}"
+                th:data-bs-description="${dataTraining.description}"
+                th:data-bs-monthstart="${dataTraining.monthstart}"
+                th:data-bs-yearstart="${dataTraining.yearstart}"
+                th:data-bs-monthend="${dataTraining.monthend}"
+                th:data-bs-yearend="${dataTraining.yearend}"
+                th:data-bs-sertificatefront="${dataTraining.sertificatefront}"
+                th:data-bs-sertificateback="${dataTraining.sertificateback}"
+                
+                
+              >
+                <i class="icon-note"></i>Edit
+              </button>
+              <a button type="button" class="btn btn-primary col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" th:href="@{setting-training-edit-{id}(id=${dataTraining.id})}"><i class="icon-note"></i></a>
+              <a button type="button" class="btn btn-danger col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" th:href="@{setting-training-delete-{id}(id=${dataTraining.id})}"><i class="icon-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row text-center mb-3 pt-3">
+        <div class="col">
+          <a class="btn text-white btn-xl" href="#page-top" style="background-color: #303030">Show</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal addTrainingModal-->
+  <div class="modal fade" id="addTrainingModal" tabindex="-1" aria-labelledby="addTrainingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form th:action="@{/setting-training-add-register}" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addTrainingModalLabel">Add Training</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- <div class="col-md-6">
+              <label for="validationDefault02" class="form-label">Id</label>
+              <input type="text" class="form-control" id="id" name="id" />
+            </div> -->
+            <div class="col-md-12">
+              <label for="validationDefault01" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Company</label>
+              <input type="text" class="form-control" id="company" name="company" />
+            </div>
+            <div class="col mb-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Month Start</label>
+              <input type="text" class="form-control" id="monthstart" name="monthstart" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Year Start</label>
+              <input type="text" class="form-control" id="yearstart" name="yearstart" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Month End</label>
+              <input type="text" class="form-control" id="monthend" name="monthend" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Year End</label>
+              <input type="text" class="form-control" id="yearend" name="yearend" />
+            </div>
+            <div class="col-md-12">
+              <label for="formFile" class="form-label">Sertificate Front</label>
+              <input class="form-control" type="file" id="sertificatefront" name="sertificatefront" />
+            </div>
+            <div class="col-md-12">
+              <label for="formFile" class="form-label">Sertificate Back</label>
+              <input class="form-control" type="file" id="sertificateback" name="sertificateback" />
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal editTrainingModal-->
+  <div class="modal fade" id="editTrainingModal" tabindex="-1" aria-labelledby="editTrainingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form th:action="@{/setting-training-add-register}" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editTrainingModalLabel">New message</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+
+              <input type="hidden" class="form-control" id="id" name="id" />
+            
+            <div class="col-md-12">
+              <label for="validationDefault01" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Company</label>
+              <input type="text" class="form-control" id="company" name="company" />
+            </div>
+            <div class="col mb-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Month Start</label>
+              <input type="text" class="form-control" id="monthstart" name="monthstart" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Year Start</label>
+              <input type="text" class="form-control" id="yearstart" name="yearstart" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Month End</label>
+              <input type="text" class="form-control" id="monthend" name="monthend" />
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefault02" class="form-label">Year End</label>
+              <input type="text" class="form-control" id="yearend" name="yearend" />
+            </div>
+            <div class="col-md-12">
+              <label for="formFile" class="form-label">Sertificate Front</label>
+              <input class="form-control" type="file" id="sertificatefront" name="sertificatefront" />
+            </div>
+            <div class="col-md-12">
+              <label for="formFile" class="form-label">Sertificate Back</label>
+              <input class="form-control" type="file" id="sertificateback" name="sertificateback" />
+            </div>
+
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+     <!-- ini buat form edit -->
+     <script>
+      var exampleModal = document.getElementById("editTrainingModal");
+      editTrainingModal.addEventListener("show.bs.modal", function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        // var id = button.getAttribute("data-bs-whatever");
+        // var about = button.getAttribute("data-bs-about");
+
+        var id = button.getAttribute("data-bs-id");
+        var title = button.getAttribute("data-bs-title");
+        var company = button.getAttribute("data-bs-company");
+        var description = button.getAttribute("data-bs-description");
+        var monthstart = button.getAttribute("data-bs-monthstart");
+        var yearstart = button.getAttribute("data-bs-yearstart");
+        var monthend = button.getAttribute("data-bs-monthend");
+        var yearend= button.getAttribute("data-bs-yearend");
+        var sertificatefront = button.getAttribute("data-bs-sertificatefront");
+        var sertificateback = button.getAttribute("data-bs-sertificateback");
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modalTitle = editTrainingModal.querySelector(".modal-title");
+        var modalBodyInputId = editTrainingModal.querySelector(".modal-body  #id");
+        var modalBodyInputTitle = editTrainingModal.querySelector(".modal-body  #title");
+        var modalBodyInputCompany = editTrainingModal.querySelector(".modal-body  #company");
+        var modalBodyInputDescription = editTrainingModal.querySelector(".modal-body  #description");
+        var modalBodyInputMonthStart = editTrainingModal.querySelector(".modal-body  #monthstart");
+        var modalBodyInputYearStart = editTrainingModal.querySelector(".modal-body  #yearstart");
+        var modalBodyInputMonthEnd = editTrainingModal.querySelector(".modal-body  #monthend");
+        var modalBodyInputYearEnd = editTrainingModal.querySelector(".modal-body  #yearend");
+        var modalBodyInputSertificateFront = editTrainingModal.querySelector(".modal-body  #sertificatefront");
+        var modalBodyInputSertificateBack = editTrainingModal.querySelector(".modal-body  #sertificateback");
+     
+        modalTitle.textContent = "Edit Data Training " + id;
+        modalBodyInputId.value = id;
+        modalBodyInputTitle.value = title;
+        modalBodyInputCompany.value = company;
+        modalBodyInputDescription.value = description;
+        modalBodyInputMonthStart.value = monthstart;
+        modalBodyInputYearStart.value = yearstart;
+        modalBodyInputMonthEnd.value = monthend;
+        modalBodyInputYearEnd.value = yearend;
+        modalBodyInputSertificateFront.value = sertificatefront;
+        modalBodyInputSertificateBack.value = sertificateback;
+      });
+    </script>
+  </body>
+</html>

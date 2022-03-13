@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper" style="background-color: #000000c2">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="#page-top">Abdulloh</a></li>
+        <li class="sidebar-nav-item"><a href="dashboard">Main Menu</a></li>
+        <li class="sidebar-nav-item"><a href="setting-profile">Profile</a></li>
+        <li class="sidebar-nav-item"><a href="setting-about">About</a></li>
+        <li class="sidebar-nav-item"><a href="setting-education">Education</a></li>
+        <li class="sidebar-nav-item"><a href="setting-experience">Experience</a></li>
+        <li class="sidebar-nav-item"><a href="setting-training">Training</a></li>
+        <li class="sidebar-nav-item"><a href="setting-portofolio">Portofolio</a></li>
+      </ul>
+    </nav>
+
+    <!-- End Notif -->
+    <!-- About-->
+    <section class="content-section bg-light bg-white" id="about">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+        <path fill="#ecb807" fill-opacity="1" d="M0,128L80,128C160,128,320,128,480,112C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+      </svg>
+      <div class="container px-4 px-lg-5 text-center">
+        <div class="row gx-4 gx-lg-5 justify-content-center pt-4">
+          <div class="col-lg-10">
+            <h2>About Me</h2>
+            <div class="row justify-content-center fs-5 text-center pt-4 pb-4">
+              <div class="col-md-10" th:each="dataAbout :${dataListAbout}">
+                <p th:text="${dataAbout.name}"></p>
+              </div>
+            </div>
+
+            <a class="btn btn-dark btn-xl" href="#table">Table</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="content-section" id="table">
+      <div class="container">
+        <div class="row text-center mb-3 pt-3">
+          <!-- Notif -->
+          <!-- <div th:if="${session.msg}"> -->
+          <!-- <div class="alert alert-success" role="alert" th:text="${session.msg}"></div>
+            <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+          <div th:if="${session.msg}">
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+              <div class="alert alert-success alert-dismissible fade show" role="alert" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div th:text="${session.msg}"></div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+            </div>
+          </div>
+          <div class="col">
+            <h2>Table Profile</h2>
+          </div>
+        </div>
+
+        <div class="row mb-3 pt-3">
+          <div class="col text-start">
+            <a class="btn text-white btn-l btn-primary" data-bs-toggle="modal" data-bs-target="#addAboutModal"><i class="icon-plus"> Add</i></a>
+          </div>
+          <div class="col text-end">
+            <a class="btn text-white btn-l" href="#page-top" style="background-color: #303030">Show</a>
+          </div>
+        </div>
+
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr class="text-center">
+              <td>Id</td>
+              <td>About</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody th>
+            <tr th:each="dataAbout :${dataListAbout}">
+              <td th:text="${dataAbout.id}" class="col-md-1 text-center"></td>
+              <td th:text="${dataAbout.name}" class="col-md-8"></td>
+              <td class="col-md-2 text-center">
+                <button type="button" class="btn btn-primary col-md-3" data-bs-toggle="modal" data-bs-target="#editAboutModal" th:data-bs-whatever="${dataAbout.id}" th:data-bs-about="${dataAbout.name}"><i class="icon-note"></i>Edit</button>
+                <a button type="button" class="btn btn-primary col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" th:href="@{setting-about-edit-{id}(id=${dataAbout.id})}"><i class="icon-note"></i></a>
+                <a button type="button" class="btn btn-danger col-md-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" th:href="@{setting-about-delete-{id}(id=${dataAbout.id})}"><i class="icon-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row text-center mb-3 pt-3">
+          <div class="col">
+            <a class="btn text-white btn-xl" href="#page-top" style="background-color: #303030">Show</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal addModalAbout-->
+    <div class="modal fade" id="addAboutModal" tabindex="-1" aria-labelledby="addAboutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form th:action="@{/setting-about-add-register}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addAboutModalLabel">Add About</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col mb-12">
+                <label for="exampleFormControlTextarea1" class="form-label">About</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="name"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <!-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal editModalAbout-->
+    <div class="modal fade" id="editAboutModal" tabindex="-1" aria-labelledby="editAboutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form th:action="@{/setting-about-add-register}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editAboutModalLabel">New message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- idnya -->
+              <div class="mb-3">
+                <input type="hidden" class="form-control" id="id" name="id" />
+              </div>
+              <!-- data about sebelum diubah -->
+              <div class="mb-3">
+                <label for="aboutOld" class="col-form-label">About Old:</label>
+                <textarea readonly rows="5" class="form-control" id="aboutOld"></textarea>
+              </div>
+              <!-- about syang akan diubah -->
+              <div class="mb-3">
+                <label for="about" class="col-form-label">About:</label>
+                <textarea class="form-control" rows="10" id="about" name="name"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <!-- ini buat form edit -->
+    <script>
+      var exampleModal = document.getElementById("editAboutModal");
+      editAboutModal.addEventListener("show.bs.modal", function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        var id = button.getAttribute("data-bs-whatever");
+        var about = button.getAttribute("data-bs-about");
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modalTitle = editAboutModal.querySelector(".modal-title");
+        var modalBodyInputId = editAboutModal.querySelector(".modal-body  #id");
+        var modalBodyInputAboutOld = editAboutModal.querySelector(".modal-body #aboutOld");
+        var modalBodyInputAbout = editAboutModal.querySelector(".modal-body #about");
+
+        modalTitle.textContent = "Edit Data About " + id;
+        modalBodyInputId.value = id;
+        modalBodyInputAboutOld.value = about;
+        modalBodyInputAbout.value = about;
+      });
+    </script>
+  </body>
+</html>

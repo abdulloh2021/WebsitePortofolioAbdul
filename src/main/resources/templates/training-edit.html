@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper" style="background-color: #000000c2">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="/">Abdulloh</a></li>
+        <li class="sidebar-nav-item"><a href="dashboard">Main Menu</a></li>
+        <li class="sidebar-nav-item"><a href="setting-profile">Profile</a></li>
+        <li class="sidebar-nav-item"><a href="setting-about">About</a></li>
+        <li class="sidebar-nav-item"><a href="setting-education">Education</a></li>
+        <li class="sidebar-nav-item"><a href="setting-experience">Experience</a></li>
+        <li class="sidebar-nav-item"><a href="setting-training">Training</a></li>
+        <li class="sidebar-nav-item"><a href="setting-portofolio">Portofolio</a></li>
+      </ul>
+    </nav>
+    <!-- Header-->
+    <header class="masthead d-flex align-items-center" style="background-color: #ecb807">
+      <div class="container px-4 px-lg-5 text-center" >
+        <div class="content-section-heading pt-4 pb-4">
+            <h3 class="text-secondary mb-0 text-white" >Edit</h3>
+            <h2 class="mb-5">Training</h2>
+            <h3 class="text-secondary mb-0 text-white" th:text="'ID '+${trainingData.id}" >Id</h3>
+          </div>
+        <form class="row g-3" th:action="@{/setting-training-edit-update}" method="post" th:object="${trainingData}"> 
+          <input type="hidden" class="form-control" id="id" name="id" th:field="${trainingData.id}"/>    
+          <div class="col-md-6">
+            <label for="validationDefault01" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" th:field="${trainingData.title}"/>
+          </div>
+          <div class="col-md-6">
+            <label for="validationDefault02" class="form-label">Company</label>
+            <input type="text" class="form-control" id="company" name="company" th:field="${trainingData.company}"/>
+          </div>
+          <div class="col-md-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3" name="description" th:field="${trainingData.description}"></textarea>
+          </div>
+          
+          <div class="col-md-3">
+            <label for="validationDefault02" class="form-label">Month Start</label>
+            <input type="text" class="form-control" id="monthstart" name="monthstart" th:field="${trainingData.monthstart}"/>
+          </div>
+          <div class="col-md-3">
+            <label for="validationDefault02" class="form-label">Year Start</label>
+            <input type="text" class="form-control" id="yearstart" name="yearstart" th:field="${trainingData.yearstart}"/>
+          </div>
+          <div class="col-md-3">
+            <label for="validationDefault02" class="form-label">Month End</label>
+            <input type="text" class="form-control" id="monthend" name="monthend" th:field="${trainingData.monthend}"/>
+          </div>
+          <div class="col-md-3">
+            <label for="validationDefault02" class="form-label">Year End</label>
+            <input type="text" class="form-control" id="yearend" name="yearend" th:field="${trainingData.yearend}"/>
+          </div>
+          <div class="col-md-6">
+            <label for="formFile" class="form-label">Sertificate Front</label>
+            <input class="form-control" type="file" id="sertificatefront" name="sertificatefront" th:field="${trainingData.sertificatefront}"/>
+          </div>
+          <div class="col-md-6">
+            <label for="formFile" class="form-label">Sertificate Back</label>
+            <input class="form-control" type="file" id="sertificateback" name="sertificateback" th:field="${trainingData.sertificateback}"/>
+          </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+          </form>
+          
+        
+        </div>
+        
+      </div>
+    </header>
+
+
+    
+
+    <!-- Table -->
+    <section class="content-section" id="table">
+        <div class="container">
+          <div class="row text-center mb-3 pt-3">
+            <div class="col">
+              <h2>Table Profile</h2>
+            </div>
+          </div>
+          <h4>
+            <a button type="button" class="btn btn-success j" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah Data" href="#"><i class="icon-plus"> Add</i></a>
+          </h4>
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <td>Id</td>
+                <td>Training</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Year</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Juaracoding / PT DIKA, Jakarta</td>
+                <td>JAVA FULLSTACK DEVELOPER</td>
+                <td>It is hidden by default, until the collapse
+                  plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                  appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom
+                  CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the</td>
+                <td>2021</td>
+                <td>
+                  <a button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" href="training-edit.html"><i class="icon-note"></i></a>
+                  <a button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" href="#"><i class="icon-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>BBPLK BEKASI</td>
+                  <td>IOT - BASED EMBEDDED SYSTEM PROGRAMING</td>
+                  <td>It is hidden by default, until the collapse
+                    plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                    appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom
+                    CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the</td>
+                  <td>2020</td>
+                  <td>
+                    <a button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" href="training-edit.html"><i class="icon-note"></i></a>
+                    <a button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" href="#"><i class="icon-trash"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>ExperIoT 4.0</td>
+                  <td>INTERNET OF THINGS KELAS ADVANCE IOT WEB BASED</td>
+                  <td>It is hidden by default, until the collapse
+                    plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                    appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom
+                    CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the</td>
+                  <td>2020</td>
+                  <td>
+                    <a button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" href="training-edit.html"><i class="icon-note"></i></a>
+                    <a button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" href="#"><i class="icon-trash"></i></a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+          <div class="row text-center mb-3 pt-3">
+            <div class="col">
+              <a class="btn text-white btn-xl" href="#page-top" style="background-color: #303030">Show</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
